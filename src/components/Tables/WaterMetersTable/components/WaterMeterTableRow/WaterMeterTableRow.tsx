@@ -1,4 +1,8 @@
+import { ColdWaterIcon } from "../../../../../assets/icons/ColdWaterIcon";
+import { HotWaterIcon } from "../../../../../assets/icons/HotWaterIcon";
+import { ConvertDateFormat } from "../../../../../hooks/ConvertDateFormat";
 import { Type_Of_Water_Area_Meter } from "../../../../../types";
+import s from "./WaterMeterTableRow.module.css";
 
 interface Props {
   number: number;
@@ -19,18 +23,31 @@ export function WaterMeterTableRow({
   date,
   initialValues,
   area,
-  description
+  description,
 }: Props) {
   return (
-    <li key={id}>
-      {number + 1}
-      {type[0] === "ColdWaterAreaMeter"
-        ? Type_Of_Water_Area_Meter.ColdWaterAreaMeter
-        : Type_Of_Water_Area_Meter.HotWaterAreaMeter}
-      {date}
-      {initialValues[0]}
-      {area}
-      {description}
+    <li key={id} className={s.root}>
+      <div className={s.number_cell}>{number + 1}</div>
+      <div className={s.type_cell}>
+        {type[0] === "ColdWaterAreaMeter" ? (
+          <div>
+            <ColdWaterIcon />{" "}
+            <span>{Type_Of_Water_Area_Meter.ColdWaterAreaMeter}</span>
+          </div>
+        ) : (
+          <div>
+            <HotWaterIcon/>{" "}
+            <span>{Type_Of_Water_Area_Meter.HotWaterAreaMeter}</span>
+          </div>
+        )}
+      </div>
+      <div className={s.date_cell}>{ConvertDateFormat(date)}</div>
+      <div className={s.is_automatic_cell}>
+        {isAutomatic === null ? "Да" : "Нет"}
+      </div>
+      <div className={s.value_cell}>{initialValues[0].toFixed(4)}</div>
+      <div className={s.area_cell}>{area}</div>
+      <div className={s.description_cell}>{description}</div>
     </li>
   );
 }

@@ -1,0 +1,28 @@
+.root {
+  width: 100%;
+  max-width: 1408px;
+  display: block;
+  margin: 0 auto;
+}
+.table_body {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 1408px;
+  border-radius: 0 0 12px 12px;
+  height: 864px;
+  overflow-y: auto;
+  margin: 0;
+}
+
+.header {
+  max-width: 400px;
+}
+
+.preloader_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 864px;
+}
