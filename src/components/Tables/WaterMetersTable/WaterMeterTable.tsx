@@ -15,24 +15,32 @@ interface Props {
   limit: number;
   offset: number;
   count: number;
+  onChangeOffset: (newOffset: number) => void;
+  isLoad: boolean;
 }
 
-const WaterMeterTable = ({ meters, limit, offset, count }: Props) => {
+const WaterMeterTable = ({
+  meters,
+  limit,
+  offset,
+  count,
+  onChangeOffset,
+  isLoad,
+}: Props) => {
   //@ts-ignore
-  console.log(meters)
   return (
     <div className={s.root}>
       <h2 className={s.header}>Список счетчиков</h2>
       <span>{count}</span>
       <WaterMeterTableHead />
-      {meters.length !== 0 ? (
+      {isLoad ? (
         <ul className={s.table_body}>
           {meters.map(
             //@ts-ignore
             (meter, index) => (
               <WaterMeterTableRow
                 id={meter.id}
-                number={index}
+                number={limit * offset + index}
                 type={meter._type}
                 date={meter.installation_date}
                 isAutomatic={meter.is_automatic}
@@ -49,7 +57,12 @@ const WaterMeterTable = ({ meters, limit, offset, count }: Props) => {
         </div>
       )}
 
-      <WaterMetersTablePagination limit={limit} offset={offset} />
+      <WaterMetersTablePagination
+        count={count}
+        limit={limit}
+        offset={offset}
+        onChangeOffset={onChangeOffset}
+      />
     </div>
   );
 };

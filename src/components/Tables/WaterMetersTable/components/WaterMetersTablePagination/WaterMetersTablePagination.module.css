@@ -6,6 +6,10 @@
   align-items: center;
   padding: 8px 16px 8px 16px;
   margin: 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+  background: white;
 }
 .container_navigation {
   width: 100%;
