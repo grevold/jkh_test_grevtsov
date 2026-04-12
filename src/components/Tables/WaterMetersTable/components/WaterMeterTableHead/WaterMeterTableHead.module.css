@@ -2,20 +2,18 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
   max-width: 1408px;
-  height: 52px;
+  background: #f0f3f7;
   color: #697180;
   font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  border-bottom: 1px solid #E0E5EB;
+  font-weight: 600;
+  padding: 8px 0px 8px 0px;
+  border-radius: 12px 12px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-.root:hover {
-  background-color: #f0f3f7;
-}
-
 .number_cell {
   display: flex;
   justify-content: start;

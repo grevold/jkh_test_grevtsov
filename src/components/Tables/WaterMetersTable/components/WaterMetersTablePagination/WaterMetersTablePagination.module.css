@@ -1,0 +1,33 @@
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  padding: 8px 16px 8px 16px;
+  margin: 0;
+}
+.container_navigation {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: end;
+  padding: 0;
+  margin: 0;
+  gap: 8px;
+}
+
+.pagination_button {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ced5de;
+  border-radius: 6px;
+}
+.pagination_button:hover {
+  background: #f2f5f8;
+}

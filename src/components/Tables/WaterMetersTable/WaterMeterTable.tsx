@@ -3,29 +3,55 @@ import { observer } from "mobx-react-lite";
 import meterStore from "../../../store";
 import { GET_Water_METERS_URL } from "../../../constants";
 import { WaterMeterTableRow } from "./components/WaterMeterTableRow/WaterMeterTableRow";
-import s from "./WaterMeterList.module.css";
+import s from "./WaterMeterTable.module.css";
+import { WaterMeterTableHead } from "./components/WaterMeterTableHead/WaterMeterTableHead";
+import { WaterMetersTablePagination } from "./components/WaterMetersTablePagination/WaterMetersTablePagination";
+import { Type_Water_Meter } from "../../../types";
+import { getSnapshot } from "mobx-state-tree";
+import { Preloader } from "../../../assets/preloader/Preloader";
 
-const WaterMeterList = observer(() => {
-  useEffect(() => {
-    meterStore.getWaterMeters(GET_Water_METERS_URL + `?limit=20&offset=0`);
-  }, []);
+interface Props {
+  meters: any;
+  limit: number;
+  offset: number;
+  count: number;
+}
 
+const WaterMeterTable = ({ meters, limit, offset, count }: Props) => {
+  //@ts-ignore
+  console.log(meters)
   return (
-    <ul className={s.root}>
-      {meterStore.waterMeters.map((meter, index) => (
-        <WaterMeterTableRow
-          id={meter.id}
-          number={index}
-          type={meter._type}
-          date={meter.installation_date}
-          isAutomatic={meter.is_automatic}
-          initialValues={meter.initial_values}
-          area={meter.area.id}
-          description={meter.description}
-        />
-      ))}
-    </ul>
-  );
-});
+    <div className={s.root}>
+      <h2 className={s.header}>Список счетчиков</h2>
+      <span>{count}</span>
+      <WaterMeterTableHead />
+      {meters.length !== 0 ? (
+        <ul className={s.table_body}>
+          {meters.map(
+            //@ts-ignore
+            (meter, index) => (
+              <WaterMeterTableRow
+                id={meter.id}
+                number={index}
+                type={meter._type}
+                date={meter.installation_date}
+                isAutomatic={meter.is_automatic}
+                initialValues={meter.initial_values}
+                area={meter.area.id}
+                description={meter.description}
+              />
+            ),
+          )}
+        </ul>
+      ) : (
+        <div className={s.preloader_container}>
+          <Preloader />
+        </div>
+      )}
 
-export default WaterMeterList;
+      <WaterMetersTablePagination limit={limit} offset={offset} />
+    </div>
+  );
+};
+
+export default WaterMeterTable;

@@ -9,10 +9,8 @@ interface Props {
 export const LayoutMain: React.FC<Props> = ({ children }) => {
   return (
     <main className={s.root}>
-      <div className={s.container}>
-        <Header />
-        {children}
-      </div>
+      <Header />
+      <div className={s.container}>{children}</div>
     </main>
   );
 };
