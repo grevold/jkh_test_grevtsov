@@ -1,0 +1,20 @@
+.root {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background-color: #FEE3E3;
+  cursor: pointer;
+}
+
+.root:hover{
+    background-color: #FED7D7;
+}
+
+.unVisible{
+  display: none;
+
+}

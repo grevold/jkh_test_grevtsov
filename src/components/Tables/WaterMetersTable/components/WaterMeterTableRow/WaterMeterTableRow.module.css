@@ -59,3 +59,10 @@
   align-items: start;
   width: 304px;
 }
+
+.delete_cell{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+}

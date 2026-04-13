@@ -17,6 +17,7 @@ interface Props {
   count: number;
   onChangeOffset: (newOffset: number) => void;
   isLoad: boolean;
+  onDeleteMeter: (meterId: string) => void;
 }
 
 const WaterMeterTable = ({
@@ -26,6 +27,7 @@ const WaterMeterTable = ({
   count,
   onChangeOffset,
   isLoad,
+  onDeleteMeter
 }: Props) => {
   //@ts-ignore
   return (
@@ -34,7 +36,7 @@ const WaterMeterTable = ({
       <div className={s.info_container}>
         <span> Всего счетчиков:{count}</span>
       </div>
-      
+
       <WaterMeterTableHead />
       {isLoad ? (
         <ul className={s.table_body}>
@@ -50,6 +52,7 @@ const WaterMeterTable = ({
                 initialValues={meter.initial_values}
                 area={meter.area.id}
                 description={meter.description}
+                onDeleteMeter={onDeleteMeter}
               />
             ),
           )}
