@@ -1,34 +1,31 @@
-import { types, flow, getSnapshot } from "mobx-state-tree";
+import { types, flow } from "mobx-state-tree";
 import WaterMeterModel from "./models/WaterMeterModel";
 import { Type_Water_Meter } from "./types";
-import { GET_Water_METERS_URL } from "./constants";
+import AreaModel from "./models/AreaModel";
 
 // Определяем store
 const WaterMeterStore = types
   .model("WaterMeterStore", {
     waterMeters: types.array(WaterMeterModel),
+    areas: types.array(AreaModel),
     count: types.number,
   })
   .actions((self) => ({
-    // Асинхронное действие для загрузки данных
-    getWaterMeters: flow(function* (url) {
-      try {
-        const response = yield fetch(url);
-        const data = yield response.json();
-
-        self.waterMeters = data.results.map((item: Type_Water_Meter) =>
-          WaterMeterModel.create(item),
-        );
-        self.count = data.count;
-      } catch (error) {
-        console.error("Не удалось загрузить счетчики воды", error);
-      }
-    }),
+    setWaterMeters(meters: any) {
+      self.waterMeters = meters;
+    },
+    setAreas(areas: any) {
+      self.areas = areas;
+    },
+    setCount(count: number) {
+      self.count = count;
+    },
   }));
 
 // Создаем экземпляр store
 const meterStore = WaterMeterStore.create({
   waterMeters: [],
+  areas: [],
   count: 0,
 });
 

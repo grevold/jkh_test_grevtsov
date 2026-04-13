@@ -31,7 +31,10 @@ const WaterMeterTable = ({
   return (
     <div className={s.root}>
       <h2 className={s.header}>Список счетчиков</h2>
-      <span>{count}</span>
+      <div className={s.info_container}>
+        <span> Всего счетчиков:{count}</span>
+      </div>
+      
       <WaterMeterTableHead />
       {isLoad ? (
         <ul className={s.table_body}>
