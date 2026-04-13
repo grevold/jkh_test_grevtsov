@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import WaterMeterTable from "../../components/Tables/WaterMetersTable/WaterMeterTable";
-import s from "./MainPage.module.css";
-import meterStore from "../../store";
-import { observer } from "mobx-react-lite";
-import { createSearchParams, useLocation, useNavigate } from "react-router-dom";
-import { useQueries, useQuery } from "@tanstack/react-query";
-import { fetchMeters } from "../../api/meters";
-import { fetchAreas } from "../../api/areas";
+import { useEffect, useState } from 'react';
+import WaterMeterTable from '../../components/Tables/WaterMetersTable/WaterMeterTable';
+import s from './MainPage.module.css';
+import meterStore from '../../store';
+import { observer } from 'mobx-react-lite';
+import { createSearchParams, useLocation, useNavigate } from 'react-router-dom';
+import { useQueries, useQuery } from '@tanstack/react-query';
+import { fetchMeters } from '../../api/meters';
+import { fetchAreas } from '../../api/areas';
 
 export const MainPage = observer(() => {
   const location = useLocation();
@@ -15,7 +15,7 @@ export const MainPage = observer(() => {
   const [state, setState] = useState({
     limit: 20,
     // текущее значение offset парсим из url (по умолчанию - 0)
-    offset: Number(new URLSearchParams(location.search).get("offset")),
+    offset: Number(new URLSearchParams(location.search).get('offset')),
     count: 0,
     result: [],
     isLoad: false,
@@ -30,7 +30,7 @@ export const MainPage = observer(() => {
     error: errorWaterMeters,
     data: dataWaterMeters,
   } = useQuery({
-    queryKey: ["waterMeters", state.limit, state.offset],
+    queryKey: ['waterMeters', state.limit, state.offset],
     queryFn: () => fetchMeters(state.limit, state.offset),
     staleTime: 1000 * 60 * 5,
   });
@@ -64,23 +64,23 @@ export const MainPage = observer(() => {
   }, [state.result]);
 
   const handleChangeOffset = (newOffset: number) => {
-    setState((state) => ({ ...state, offset: newOffset-1, isLoad: false }));
+    setState((state) => ({ ...state, offset: newOffset - 1, isLoad: false }));
   };
 
   // записываем query-параметры в url
   useEffect(() => {
     navigate(
-      `?${createSearchParams({ limit: `${state.limit}`, offset: `${state.offset}` })}`,
+      `?${createSearchParams({ limit: `${state.limit}`, offset: `${state.offset}` })}`
     );
   }, [state.result, state.offset]);
 
   const handleDelete = (meterId: string) => {
     meterStore.deleteMeter(meterId);
     //@ts-ignore
-    setState((state)=>({
+    setState((state) => ({
       ...state,
       result: meterStore.waterMeters,
-    }))
+    }));
   };
 
   return (

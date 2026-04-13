@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import s from "./WaterMetersTablePagination.module.css";
+import { useEffect, useMemo, useState } from 'react';
+import s from './WaterMetersTablePagination.module.css';
 
 interface Props {
   count: number;
@@ -38,7 +38,7 @@ export function WaterMetersTablePagination({
     const endIndex = Math.min(startIndex + buttonsPerPage, totalPages);
     return Array.from(
       { length: endIndex - startIndex },
-      (_, i) => startIndex + i + 1,
+      (_, i) => startIndex + i + 1
     );
   };
 
@@ -67,11 +67,11 @@ export function WaterMetersTablePagination({
         <div className={s.last_button_container}>
           <div className={s.ellipsis_container}>...</div>
           <li
-              className={s.pagination_button}
-              onClick={() => onChangeOffset(totalPages)}
-            >
-              {totalPages}
-            </li>
+            className={s.pagination_button}
+            onClick={() => onChangeOffset(totalPages)}
+          >
+            {totalPages}
+          </li>
         </div>
         <button
           className={s.button_control}

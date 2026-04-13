@@ -72,8 +72,8 @@
   background: white;
 }
 
-.last_button_container{
+.last_button_container {
   display: flex;
   flex-direction: row;
-  gap:8px
+  gap: 8px;
 }

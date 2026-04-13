@@ -1,7 +1,7 @@
-import { types } from "mobx-state-tree";
+import { types } from 'mobx-state-tree';
 
 // Определяем модель
-const AreaModel = types.model("AreaModel", {
+const AreaModel = types.model('AreaModel', {
   id: types.string,
   number: types.number,
   str_number: types.string,

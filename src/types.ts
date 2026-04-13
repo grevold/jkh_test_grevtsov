@@ -13,8 +13,8 @@ export interface Type_Water_Meter {
 }
 
 export enum Type_Of_Water_Area_Meter {
-  "ColdWaterAreaMeter" = "ХВС",
-  "HotWaterAreaMeter" = "ГВС",
+  'ColdWaterAreaMeter' = 'ХВС',
+  'HotWaterAreaMeter' = 'ГВС',
 }
 
 export interface Area {

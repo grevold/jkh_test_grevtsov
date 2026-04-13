@@ -10,7 +10,7 @@
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  border-bottom: 1px solid #E0E5EB;
+  border-bottom: 1px solid #e0e5eb;
 }
 .root:hover {
   background-color: #f0f3f7;
@@ -60,7 +60,7 @@
   width: 304px;
 }
 
-.delete_cell{
+.delete_cell {
   display: flex;
   justify-content: center;
   align-items: center;

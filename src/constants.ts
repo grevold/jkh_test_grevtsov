@@ -5,6 +5,5 @@ export const GET_Water_METERS_URL = `https://showroom.eis24.me/c300/api/v4/test/
 // Получить адреса
 export const GET_AREAS = `http://showroom.eis24.me/c300/api/v4/test/areas/`;
 
-
 //Удаление счетчика
-export const DELETE_METER_URL = `http://showroom.eis24.me/c300/api/v4/test/meters/`
+export const DELETE_METER_URL = `http://showroom.eis24.me/c300/api/v4/test/meters/`;

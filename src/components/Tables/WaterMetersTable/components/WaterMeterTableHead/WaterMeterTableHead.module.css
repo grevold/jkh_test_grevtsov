@@ -58,7 +58,7 @@
   width: 304px;
 }
 
-.delete_cell{
+.delete_cell {
   display: flex;
   justify-content: center;
   align-items: center;
