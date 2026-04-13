@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/jkh_test_grevtsov/static/css/main.afbcb66c.css",
+    "main.js": "/jkh_test_grevtsov/static/js/main.c350a3b8.js",
+    "static/js/453.214326b5.chunk.js": "/jkh_test_grevtsov/static/js/453.214326b5.chunk.js",
+    "index.html": "/jkh_test_grevtsov/index.html",
+    "main.afbcb66c.css.map": "/jkh_test_grevtsov/static/css/main.afbcb66c.css.map",
+    "main.c350a3b8.js.map": "/jkh_test_grevtsov/static/js/main.c350a3b8.js.map",
+    "453.214326b5.chunk.js.map": "/jkh_test_grevtsov/static/js/453.214326b5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.afbcb66c.css",
+    "static/js/main.c350a3b8.js"
+  ]
+}
