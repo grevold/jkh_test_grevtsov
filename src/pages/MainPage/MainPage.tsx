@@ -37,7 +37,6 @@ export const MainPage = observer(() => {
 
   useEffect(() => {
     if (dataWaterMeters) {
-      console.log(dataWaterMeters);
       meterStore.setWaterMeters(dataWaterMeters.results);
       //@ts-ignore
       meterStore.setCount(dataWaterMeters.count);

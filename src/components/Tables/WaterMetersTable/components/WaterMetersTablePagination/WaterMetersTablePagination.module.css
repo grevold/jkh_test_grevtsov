@@ -35,3 +35,27 @@
 .pagination_button:hover {
   background: #f2f5f8;
 }
+
+.pagination_button_active {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ced5de;
+  border-radius: 6px;
+  background-color: #ced5de;
+}
+
+.ellipsis_container {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid #ced5de;
+  border-radius: 6px;
+  background-color: #ced5de;
+}
