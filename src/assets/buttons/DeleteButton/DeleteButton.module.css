@@ -6,15 +6,14 @@
   justify-content: center;
   border: none;
   border-radius: 8px;
-  background-color: #FEE3E3;
+  background-color: #fee3e3;
   cursor: pointer;
 }
 
-.root:hover{
-    background-color: #FED7D7;
+.root:hover {
+  background-color: #fed7d7;
 }
 
-.unVisible{
+.unVisible {
   display: none;
-
 }

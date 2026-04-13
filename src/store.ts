@@ -1,11 +1,11 @@
-import { types, flow, cast } from "mobx-state-tree";
-import WaterMeterModel from "./models/WaterMeterModel";
-import { Type_Water_Meter } from "./types";
-import AreaModel from "./models/AreaModel";
+import { types, flow, cast } from 'mobx-state-tree';
+import WaterMeterModel from './models/WaterMeterModel';
+import { Type_Water_Meter } from './types';
+import AreaModel from './models/AreaModel';
 
 // Определяем store
 const WaterMeterStore = types
-  .model("WaterMeterStore", {
+  .model('WaterMeterStore', {
     waterMeters: types.array(WaterMeterModel),
     areas: types.array(AreaModel),
     count: types.number,

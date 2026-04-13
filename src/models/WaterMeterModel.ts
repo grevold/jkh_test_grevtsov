@@ -1,7 +1,7 @@
-import { types } from "mobx-state-tree";
+import { types } from 'mobx-state-tree';
 
 // Определяем модель
-const WaterMeterModel = types.model("WaterMeterModel", {
+const WaterMeterModel = types.model('WaterMeterModel', {
   id: types.string,
   _type: types.array(types.string),
   area: types.model({

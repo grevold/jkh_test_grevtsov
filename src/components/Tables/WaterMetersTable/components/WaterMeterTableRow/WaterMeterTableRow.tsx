@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { DeleteButton } from "../../../../../assets/buttons/DeleteButton/DeleteButton";
-import { ColdWaterIcon } from "../../../../../assets/icons/ColdWaterIcon";
-import { DeleteIcon } from "../../../../../assets/icons/DeleteIcon";
-import { HotWaterIcon } from "../../../../../assets/icons/HotWaterIcon";
-import { ConvertDateFormat } from "../../../../../hooks/ConvertDateFormat";
-import { Type_Of_Water_Area_Meter } from "../../../../../types";
-import s from "./WaterMeterTableRow.module.css";
+import { useState } from 'react';
+import { DeleteButton } from '../../../../../assets/buttons/DeleteButton/DeleteButton';
+import { ColdWaterIcon } from '../../../../../assets/icons/ColdWaterIcon';
+import { DeleteIcon } from '../../../../../assets/icons/DeleteIcon';
+import { HotWaterIcon } from '../../../../../assets/icons/HotWaterIcon';
+import { ConvertDateFormat } from '../../../../../hooks/ConvertDateFormat';
+import { Type_Of_Water_Area_Meter } from '../../../../../types';
+import s from './WaterMeterTableRow.module.css';
 
 interface Props {
   number: number;
@@ -28,7 +28,7 @@ export function WaterMeterTableRow({
   initialValues,
   area,
   description,
-  onDeleteMeter
+  onDeleteMeter,
 }: Props) {
   const [visibleDeleteButton, setVisibleDeleteButton] = useState(false);
   return (
@@ -40,27 +40,31 @@ export function WaterMeterTableRow({
     >
       <div className={s.number_cell}>{number + 1}</div>
       <div className={s.type_cell}>
-        {type[0] === "ColdWaterAreaMeter" ? (
+        {type[0] === 'ColdWaterAreaMeter' ? (
           <div>
-            <ColdWaterIcon />{" "}
+            <ColdWaterIcon />{' '}
             <span>{Type_Of_Water_Area_Meter.ColdWaterAreaMeter}</span>
           </div>
         ) : (
           <div>
-            <HotWaterIcon />{" "}
+            <HotWaterIcon />{' '}
             <span>{Type_Of_Water_Area_Meter.HotWaterAreaMeter}</span>
           </div>
         )}
       </div>
       <div className={s.date_cell}>{ConvertDateFormat(date)}</div>
       <div className={s.is_automatic_cell}>
-        {isAutomatic === null ? "Да" : "Нет"}
+        {isAutomatic === null ? 'Да' : 'Нет'}
       </div>
       <div className={s.value_cell}>{initialValues[0].toFixed(4)}</div>
       <div className={s.area_cell}>{area}</div>
       <div className={s.description_cell}>{description}</div>
       <div className={s.delete_cell}>
-        <DeleteButton visible={visibleDeleteButton} onClickDelete={onDeleteMeter} meterId={id} />
+        <DeleteButton
+          visible={visibleDeleteButton}
+          onClickDelete={onDeleteMeter}
+          meterId={id}
+        />
       </div>
     </li>
   );

@@ -1,6 +1,6 @@
-import { JSX } from "react";
-import s from "./LayoutMain.module.css";
-import { Header } from "../../Header/Header";
+import { JSX } from 'react';
+import s from './LayoutMain.module.css';
+import { Header } from '../../Header/Header';
 
 interface Props {
   children?: JSX.Element;

@@ -1,11 +1,11 @@
-import { DeleteIcon } from "../../icons/DeleteIcon";
+import { DeleteIcon } from '../../icons/DeleteIcon';
 
-import s from "./DeleteButton.module.css";
+import s from './DeleteButton.module.css';
 
 interface Props {
   visible?: boolean;
   onClickDelete: (meterId: string) => void;
-  meterId:string
+  meterId: string;
 }
 
 export const DeleteButton = ({ visible, onClickDelete, meterId }: Props) => {

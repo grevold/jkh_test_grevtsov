@@ -1,4 +1,4 @@
-import s from "./WaterMeterTableHead.module.css";
+import s from './WaterMeterTableHead.module.css';
 
 export function WaterMeterTableHead() {
   return (

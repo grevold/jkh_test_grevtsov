@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import { observer } from "mobx-react-lite";
-import meterStore from "../../../store";
-import { GET_Water_METERS_URL } from "../../../constants";
-import { WaterMeterTableRow } from "./components/WaterMeterTableRow/WaterMeterTableRow";
-import s from "./WaterMeterTable.module.css";
-import { WaterMeterTableHead } from "./components/WaterMeterTableHead/WaterMeterTableHead";
-import { WaterMetersTablePagination } from "./components/WaterMetersTablePagination/WaterMetersTablePagination";
-import { Type_Water_Meter } from "../../../types";
-import { getSnapshot } from "mobx-state-tree";
-import { Preloader } from "../../../assets/preloader/Preloader";
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
+import meterStore from '../../../store';
+import { GET_Water_METERS_URL } from '../../../constants';
+import { WaterMeterTableRow } from './components/WaterMeterTableRow/WaterMeterTableRow';
+import s from './WaterMeterTable.module.css';
+import { WaterMeterTableHead } from './components/WaterMeterTableHead/WaterMeterTableHead';
+import { WaterMetersTablePagination } from './components/WaterMetersTablePagination/WaterMetersTablePagination';
+import { Type_Water_Meter } from '../../../types';
+import { getSnapshot } from 'mobx-state-tree';
+import { Preloader } from '../../../assets/preloader/Preloader';
 
 interface Props {
   meters: any;
@@ -27,7 +27,7 @@ const WaterMeterTable = ({
   count,
   onChangeOffset,
   isLoad,
-  onDeleteMeter
+  onDeleteMeter,
 }: Props) => {
   //@ts-ignore
   return (
@@ -54,7 +54,7 @@ const WaterMeterTable = ({
                 description={meter.description}
                 onDeleteMeter={onDeleteMeter}
               />
-            ),
+            )
           )}
         </ul>
       ) : (
