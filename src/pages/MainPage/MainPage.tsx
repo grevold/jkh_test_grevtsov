@@ -64,7 +64,7 @@ export const MainPage = observer(() => {
   }, [state.result]);
 
   const handleChangeOffset = (newOffset: number) => {
-    setState((state) => ({ ...state, offset: newOffset, isLoad: false }));
+    setState((state) => ({ ...state, offset: newOffset-1, isLoad: false }));
   };
 
   // записываем query-параметры в url
@@ -72,7 +72,16 @@ export const MainPage = observer(() => {
     navigate(
       `?${createSearchParams({ limit: `${state.limit}`, offset: `${state.offset}` })}`,
     );
-  }, [state.result,state.offset]);
+  }, [state.result, state.offset]);
+
+  const handleDelete = (meterId: string) => {
+    meterStore.deleteMeter(meterId);
+    //@ts-ignore
+    setState((state)=>({
+      ...state,
+      result: meterStore.waterMeters,
+    }))
+  };
 
   return (
     <div className={s.root}>
@@ -83,6 +92,7 @@ export const MainPage = observer(() => {
         count={state.count}
         onChangeOffset={handleChangeOffset}
         isLoad={state.isLoad}
+        onDeleteMeter={handleDelete}
       />
     </div>
   );

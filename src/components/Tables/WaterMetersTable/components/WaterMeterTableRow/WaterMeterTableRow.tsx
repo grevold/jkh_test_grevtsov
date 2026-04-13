@@ -1,4 +1,7 @@
+import { useState } from "react";
+import { DeleteButton } from "../../../../../assets/buttons/DeleteButton/DeleteButton";
 import { ColdWaterIcon } from "../../../../../assets/icons/ColdWaterIcon";
+import { DeleteIcon } from "../../../../../assets/icons/DeleteIcon";
 import { HotWaterIcon } from "../../../../../assets/icons/HotWaterIcon";
 import { ConvertDateFormat } from "../../../../../hooks/ConvertDateFormat";
 import { Type_Of_Water_Area_Meter } from "../../../../../types";
@@ -13,6 +16,7 @@ interface Props {
   initialValues: number[];
   area: string;
   description: string;
+  onDeleteMeter: (meterId: string) => void;
 }
 
 export function WaterMeterTableRow({
@@ -24,9 +28,16 @@ export function WaterMeterTableRow({
   initialValues,
   area,
   description,
+  onDeleteMeter
 }: Props) {
+  const [visibleDeleteButton, setVisibleDeleteButton] = useState(false);
   return (
-    <li key={id} className={s.root}>
+    <li
+      key={id}
+      className={s.root}
+      onMouseMove={() => setVisibleDeleteButton(true)}
+      onMouseLeave={() => setVisibleDeleteButton(false)}
+    >
       <div className={s.number_cell}>{number + 1}</div>
       <div className={s.type_cell}>
         {type[0] === "ColdWaterAreaMeter" ? (
@@ -36,7 +47,7 @@ export function WaterMeterTableRow({
           </div>
         ) : (
           <div>
-            <HotWaterIcon/>{" "}
+            <HotWaterIcon />{" "}
             <span>{Type_Of_Water_Area_Meter.HotWaterAreaMeter}</span>
           </div>
         )}
@@ -48,6 +59,9 @@ export function WaterMeterTableRow({
       <div className={s.value_cell}>{initialValues[0].toFixed(4)}</div>
       <div className={s.area_cell}>{area}</div>
       <div className={s.description_cell}>{description}</div>
+      <div className={s.delete_cell}>
+        <DeleteButton visible={visibleDeleteButton} onClickDelete={onDeleteMeter} meterId={id} />
+      </div>
     </li>
   );
 }

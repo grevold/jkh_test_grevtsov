@@ -10,6 +10,7 @@ export function WaterMeterTableHead() {
       <div className={s.value_cell}>Текущие показания</div>
       <div className={s.area_cell}>Адрес</div>
       <div className={s.description_cell}>Примечание</div>
+      <div className={s.delete_cell}></div>
     </div>
   );
 }

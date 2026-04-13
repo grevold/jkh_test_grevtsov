@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import s from "./WaterMetersTablePagination.module.css";
 
 interface Props {
@@ -14,104 +14,75 @@ export function WaterMetersTablePagination({
   offset,
   onChangeOffset,
 }: Props) {
-  const totalPages = Math.floor(count / limit);
-
   const [currentPage, setCurrentPage] = useState(1);
-  const maxButtons = 6;
+  const buttonsPerPage = 6;
+  const totalPages = Math.floor(count / limit);
+  const [rangePages, setRangePages] = useState([]);
+  useEffect(() => {
+    const result = [];
+    for (let i = 1; i <= totalPages; i++) {
+      result.push(i);
+    }
+    //@ts-ignore
+    setRangePages(result);
+  }, [totalPages]);
 
+  // Функция для изменения текущей страницы
   const handlePageChange = (page: any) => {
     setCurrentPage(page);
   };
 
-  const getPaginationRange = () => {
-    const range = [];
-    let startPage;
-    let endPage;
-
-    if (totalPages <= maxButtons) {
-      // Если страниц меньше или равно максимальному количеству кнопок
-      startPage = 1;
-      endPage = totalPages;
-    } else {
-      // Если страниц больше максимального количества кнопок
-      const half = Math.floor(maxButtons / 2);
-
-      if (currentPage <= half) {
-        startPage = 1;
-        endPage = maxButtons;
-      } else if (currentPage + half >= totalPages) {
-        startPage = totalPages - maxButtons + 1;
-        endPage = totalPages;
-      } else {
-        startPage = currentPage - half;
-        endPage = currentPage + half;
-      }
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      range.push(i);
-    }
-
-    return range;
+  // Вычисляем, какие кнопки отображать
+  const getVisibleButtons = () => {
+    const startIndex = Math.max(currentPage - 3, 0);
+    const endIndex = Math.min(startIndex + buttonsPerPage, totalPages);
+    return Array.from(
+      { length: endIndex - startIndex },
+      (_, i) => startIndex + i + 1,
+    );
   };
 
-  const paginationRange = getPaginationRange();
-
-  const handleClick = (page:number) => {
-    handlePageChange(page);
-    onChangeOffset(currentPage);
-  };
+  const visibleButtons = getVisibleButtons();
 
   return (
     <div className={s.root}>
-      <ul className={s.container_navigation}>
-        {paginationRange.map((page) => (
+      <div className={s.container_navigation}>
+        <button
+          className={s.button_control}
+          onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          ←
+        </button>
+        <ul className={s.container_navigation}>
+          {visibleButtons.map((button) => (
+            <li
+              className={s.pagination_button}
+              onClick={() => onChangeOffset(button)}
+            >
+              {button}
+            </li>
+          ))}
+        </ul>
+        <div className={s.last_button_container}>
+          <div className={s.ellipsis_container}>...</div>
           <li
-            key={page}
-            className={
-              currentPage === page
-                ? s.pagination_button_active
-                : s.pagination_button
-            }
-            onClick={() => handleClick(page)}
-          >
-            {page}
-          </li>
-        ))}
-        {paginationRange[0] > 1 && <li className={s.ellipsis_container}>...</li>}
-        {paginationRange[paginationRange.length - 1] < totalPages && (
-          <li
-            className={s.pagination_button}
-            onClick={() => handleClick(totalPages)}
-          >
-            {totalPages}
-          </li>
-        )}
-      </ul>
+              className={s.pagination_button}
+              onClick={() => onChangeOffset(totalPages)}
+            >
+              {totalPages}
+            </li>
+        </div>
+        <button
+          className={s.button_control}
+          onClick={() =>
+            handlePageChange(Math.min(currentPage + 1, totalPages))
+          }
+          disabled={currentPage === totalPages}
+        >
+          →
+        </button>
+      </div>
     </div>
   );
 }
-
-{
-  /* <div className={s.root}>
-      <ul className={s.container_navigation}>
-        {paginationButtons.map((button, index) => (
-          <li
-            key={`button_${button}`}
-            className={s.pagination_button}
-            onClick={() => onChangeOffset(button)}
-          >
-            {button}
-          </li>
-        ))}
-      </ul>
-    </div> */
-}
-
-// const paginationButtons = useMemo(() => {
-//     const result = [];
-//     for (let i = 1; i <= Math.floor(count / limit); i++) {
-//       result.push(i);
-//     }
-//     return result;
-//   }, [count]);

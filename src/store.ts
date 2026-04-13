@@ -1,4 +1,4 @@
-import { types, flow } from "mobx-state-tree";
+import { types, flow, cast } from "mobx-state-tree";
 import WaterMeterModel from "./models/WaterMeterModel";
 import { Type_Water_Meter } from "./types";
 import AreaModel from "./models/AreaModel";
@@ -12,13 +12,20 @@ const WaterMeterStore = types
   })
   .actions((self) => ({
     setWaterMeters(meters: any) {
-      self.waterMeters = meters;
+      self.waterMeters = cast(meters);
+      console.log(self.waterMeters);
     },
     setAreas(areas: any) {
       self.areas = areas;
     },
     setCount(count: number) {
       self.count = count;
+    },
+    deleteMeter(meterId: string) {
+      const index = self.waterMeters.findIndex((meter) => meter.id === meterId);
+      if (index !== -1) {
+        self.waterMeters.splice(index, 1);
+      }
     },
   }));
 
