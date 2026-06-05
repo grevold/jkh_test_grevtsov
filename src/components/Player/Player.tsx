@@ -1,34 +1,46 @@
 import { useCallback, useRef, useState } from 'react';
 import ReactPlayer from 'react-player';
 import videojs from 'video.js';
+import s from "./Player.module.css"
 
 interface Props {
-    src: string
+    src: string;
+    isPlay: boolean
 
 }
 
-export function Player({ src }: Props) {
+export function Player({ src, isPlay }: Props) {
 
     const styles = {
         display: 'flex',
         "flex-direction": 'raw',
         "flex-wrap": "wrap",
-        color:"white"
+        color: "white"
     };
     const [state, setState] = useState(false)
 
+    const [error, setError] = useState(false);
 
-    return (
-        <div>
-            <span style={styles} >{src}</span><ReactPlayer src={src} width={620} height={480} controls={true} onReady={() => {
-                setState(true);
-            }}></ReactPlayer>
-            <div>{state ? ("видео загружено") : ("видео не загружено")}</div></div>
+    if (error) {
+        return <div className={s.error_block}>Ошибка видео-потока</div>
+    } else {
+        return (
+            <div>
+                <span style={styles} >{src}</span><ReactPlayer id={src} src={src} width={620} height={480} controls={true} onReady={() => {
+                    setState(true);
+                }} playing={isPlay} onError={() => setError(true)}></ReactPlayer>
+                <div>{state ? ("видео загружено") : ("видео не загружено")}</div></div>
 
 
 
 
-    )
+        )
+
+    }
+
+
+
+
 
 
 
