@@ -16,6 +16,8 @@ code {
 body,
 html {
   font-family: 'Roboto', sans-serif;
+  background-color: black;
+  color:white
 }
 
 .grid{
