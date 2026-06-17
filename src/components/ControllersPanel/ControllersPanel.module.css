@@ -1,0 +1,25 @@
+.button_play {
+    border: none;
+    background: #14b306;
+    transform: scale(-1, 1);
+    cursor: pointer;
+}
+
+.button_play:hover {
+    background: #26e015;
+}
+
+.button_stop {
+    border: none;
+    background: #b30909;
+    cursor: pointer;
+}
+
+.button_stop:hover {
+    background: #f31010;
+}
+
+.root{
+    width: 100%;
+    margin-bottom: 50px;
+}

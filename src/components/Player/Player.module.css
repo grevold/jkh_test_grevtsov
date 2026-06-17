@@ -1,6 +1,20 @@
 .error_block {
-    width: 480px;
-    height: 220px;
-    background-color: bisque;
+    margin-top: 65px;
+    width: 620px;
+    height: 350px;
+    background-color: rgb(75, 75, 74);
     color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: aliceblue;
+}
+
+.error_container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
 }

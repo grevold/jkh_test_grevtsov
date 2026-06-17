@@ -1,0 +1,7 @@
+export function StopIcon() {
+    return (<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 7L11 25" stroke="white" stroke-width="2" stroke-linecap="round" />
+        <path d="M21 7L21 25" stroke="white" stroke-width="2" stroke-linecap="round" />
+    </svg>
+    )
+}
