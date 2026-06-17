@@ -1,5 +1,5 @@
 .error_block {
-    margin-top: 65px;
+    margin-top: 68px;
     width: 620px;
     height: 350px;
     background-color: rgb(75, 75, 74);
@@ -17,4 +17,9 @@
     flex-direction: column;
     align-items: start;
     justify-content: end;
+}
+
+.camera_title{
+    font-size: 24px;
+    font-weight: 600;
 }
