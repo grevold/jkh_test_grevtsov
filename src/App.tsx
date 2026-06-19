@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { ControllersPanel } from "./components/ControllersPanel/ControllersPanel";
 import { Grid } from "./components/Grid/Grid";
-import { Player } from "./components/Player/Player";
+import { Layout } from "./components/Layout/Layout";
 
 
 function App() {
+
 
   const VIDEOS = ["http://minstroy:A21GbztRX@81.90.211.34:33661/cameras/58/streaming/main.mp4",
     "http://minstroy:A21GbztRX@81.90.211.34:33661/cameras/24/streaming/main.mp4",
@@ -16,13 +17,17 @@ function App() {
 
 
   return (
-    <>
-      <h1>Прораб-Watcher</h1>
-      <ControllersPanel onChange={setIsPlayAll} isPlayAll={isPlayAll} />
-      <div className="container">
-        <Grid videosSrcs={VIDEOS} isPlayAll={isPlayAll}></Grid>
+
+    <Layout>
+      <div>
+        <h1>Прораб-Watcher</h1>
+        <ControllersPanel onChange={setIsPlayAll} isPlayAll={isPlayAll} />
+        <div className="container">
+          <Grid videosSrcs={VIDEOS} isPlayAll={isPlayAll}></Grid>
+        </div>
       </div>
-    </>
+    </Layout>
+
 
   );
 }

@@ -2,8 +2,8 @@
   "name": "jkh_test_grevtsov",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://grevold.github.io/jkh_test_grevtsov/",
   "dependencies": {
+    "cors": "^2.8.6",
     "react-player": "^3.4.0",
     "react-router-dom": "^7.14.0",
     "react-scripts": "5.0.1",
