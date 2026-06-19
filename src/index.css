@@ -19,21 +19,3 @@ html {
   background-color: black;
   color:white
 }
-
-.grid{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1500px;
-  gap:20px
-}
-
-.container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-
-}
